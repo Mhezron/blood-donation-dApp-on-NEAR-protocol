@@ -20,7 +20,7 @@ impl Default for Donations {
     fn default() -> Self {
         Self {
             donations: HashMap::new(),
-            ids: 0,
+            ids: 1,
             
         }
     }
@@ -45,7 +45,7 @@ pub struct Donation{
 impl Donations {
     pub fn new_donation(&mut self, title: String, description: String, pints: u16, blood_type: String, location: String) { 
         let patient = env::predecessor_account_id().to_string();
-        let id = self.ids + 1;
+        let id = self.ids;
         let new_donation = Donation {
             title, 
             description, 
@@ -58,18 +58,23 @@ impl Donations {
             votes: 0,
         };
         self.donations.insert(id, new_donation);
+        self.ids += 1;
     }
 
     /// view list of availanble donations
     pub fn view_donations(&self) {
         for donation in &self.donations {
-            log!("id: {}", donation.0);
-            log!("{} ", donation.1.title);
-            log!("{} ", donation.1.description);
-            log!("{} ", donation.1.pints);
-            log!("{} ", donation.1.blood_type);
-            log!("{} ", donation.1.time);
-            log!("{} ", donation.1.location);
+            log!("
+            id: {},
+            title: {},
+            description: {},
+            pints: {},
+            blood type: {},
+            time: {},
+            location: {},
+            votes: {} "
+            ,donation.0, donation.1.title,donation.1.description, donation.1.pints,
+            donation.1.blood_type, donation.1.time, donation.1.location, donation.1.votes);
         }
     }
 
@@ -103,8 +108,8 @@ impl Donations {
 }
 
 #[cfg(test)]
-mod tests {}
-    //use super::*;
+mod tests {
+    use super::*;
     use near_sdk::{MockedBlockchain, AccountId};
     use near_sdk::{testing_env, VMContext};
 
@@ -157,10 +162,36 @@ fn test_new_donation() {
 pub fn st(text: &str) -> String{
     text.to_string()
 }
+ 
 
-fn test_view_donation(){
+#[test]
+ fn test_donate(){
     let context = get_context(patient());
     testing_env!(context);
-    let contract: Donations = Donations::default();
-    contract.view_donations( )
-}   
+    let mut contract: Donations = Donations::default();
+    contract.new_donation("Joe's-blood-drive".to_string(),
+     "help us save Joe's life".to_string(), 
+     4, 
+     "A+".to_string(), 
+     "Mombasa".to_string());
+     contract.donate(st("0707420327"), 1);
+     assert_eq!(1, contract.donations[&1].donators.len());
+     contract.view_donators(1);
+ }
+
+ #[test]
+ fn test_vote(){
+    let context = get_context(patient());
+    testing_env!(context);
+    let mut contract: Donations = Donations::default();
+    contract.new_donation("Joe's-blood-drive".to_string(),
+     "help us save Joe's life".to_string(), 
+     4, 
+     "A+".to_string(), 
+     "Mombasa".to_string());
+     contract.vote(1);
+     contract.vote(1);
+     assert_eq!(2, contract.donations[&1].votes)
+ }
+
+}

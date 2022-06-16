@@ -1,7 +1,7 @@
 [package]
 name = "blood_donation"
 version = "1.0.0"
-authors = ["Near Inc <hello@near.org>"]
+authors = ["Hezron mhezron699@gmail.com"]
 edition = "2021"
 
 [lib]
