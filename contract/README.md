@@ -1,13 +1,21 @@
-near-blank-project Smart Contract
+NEAR BLOOD DONATION APP
 ==================
 
-A [smart contract] written in [Rust] for an app initialized with [create-near-app]
+The smart contract was written in Rust
 
 
-Quick Start
+About 
 ===========
 
-Before you compile this code, you will need to install Rust with [correct target]
+The blood donation application that makes it easy for patients who are in need of blood donations
+
+to be able to make blood appeal. The application ensures the process is easy , fast and secure.
+
+A user logs in can create a blood donation appeal after creating the blood drive it is listed on the main platform where other users can see a list of all the available donations.
+
+A willing user can decide to donate to a certain patient, the details of the donor are sent to the recipient who will ensure contact.
+
+A user who does have not the required blood can also vote for the blood drive to give it a higher rating which will push the blood drive to the top of the list therefore attract more donors.
 
 
 Exploring The Code

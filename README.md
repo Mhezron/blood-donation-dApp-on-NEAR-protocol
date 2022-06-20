@@ -1,4 +1,4 @@
-near-blank-project
+NEAR BLOOD DONATION APP
 ==================
 
 This [React] app was initialized with [create-near-app]
