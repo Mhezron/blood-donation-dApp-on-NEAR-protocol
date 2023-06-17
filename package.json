@@ -2,6 +2,7 @@
   "name": "greeter",
   "version": "1.0.0",
   "license": "(MIT AND Apache-2.0)",
+
   "scripts": {
     "build": "npm run build:contract && npm run build:web",
       "build:contract": "cd contract && rustup target add wasm32-unknown-unknown && cargo build --all --target wasm32-unknown-unknown --release && cp ./target/wasm32-unknown-unknown/release/greeter.wasm ../out/main.wasm",
@@ -15,6 +16,7 @@
         "test:integration:ts": "cd integration-tests/ts && npm run test",
         "test:integration:rs": "cd integration-tests/rs && cargo run --example integration-tests"
   },
+  
   "devDependencies": {
     "@babel/core": "~7.18.2",
     "@babel/preset-env": "~7.18.2",
