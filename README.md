@@ -1,102 +1,67 @@
-NEAR BLOOD DONATION APP
-==================
-
-This [React] app was initialized with [create-near-app]
+# Blood Donation dApp on NEAR Protocol
 
 
-Quick Start
-===========
 
-To run this project locally:
+The Blood Donation dApp is designed to streamline the blood donation process by connecting blood donors with blood recipients in a decentralized manner. It utilizes the NEAR Protocol, a blockchain platform, to ensure transparency, security, and immutability.
 
-1. Prerequisites: Make sure you've installed [Node.js] ≥ 12
-2. Install dependencies: `npm install`
-3. Run the local development server: `npm run dev` (see `package.json` for a
-   full list of `scripts` you can run with `npm`)
+Key features of the Blood Donation dApp include:
 
-Now you'll have a local development environment backed by the NEAR TestNet!
+- User registration for both blood donors and recipients.
+- Ability for blood donors to record their donation history and available blood types.
+- Blood recipients can search for donors based on specific blood types and location.
+- A trust system to build credibility and encourage active participation.
 
-Go ahead and play with the app and the code. As you make code changes, the app will automatically reload.
+## Prerequisites
 
+Before running the Blood Donation dApp locally, make sure you have the following prerequisites:
 
-Exploring The Code
-==================
+- Node.js: [https://nodejs.org](https://nodejs.org) (version 14 or above)
+- NEAR CLI: Installation instructions can be found at [https://docs.near.org/docs/tools/near-cli](https://docs.near.org/docs/tools/near-cli)
 
-1. The "backend" code lives in the `/contract` folder. See the README there for
-   more info.
-2. The frontend code lives in the `/frontend` folder. `/frontend/index.html` is a great
-   place to start exploring. Note that it loads in `/frontend/assets/js/index.js`, where you
-   can learn how the frontend connects to the NEAR blockchain.
-3. Tests: there are different kinds of tests for the frontend and the smart
-   contract. See `contract/README` for info about how it's tested. The frontend
-   code gets tested with [jest]. You can run both of these at once with `npm
-   run test`.
+## Getting Started
 
+Follow these steps to set up and run the Blood Donation dApp locally:
 
-Deploy
-======
+1. Clone the repository or download the source code as a ZIP file.
+2. Open a terminal and navigate to the project directory.
+3. Install the project dependencies by running the following command:
+   ```
+   npm install
+   ```
+4. Once the installation is complete, start the local development server using the command:
+   ```
+   npm run dev
+   ```
+5. The dApp will be accessible in your web browser at `http://localhost:1234`.
 
-Every smart contract in NEAR has its [own associated account][NEAR accounts]. When you run `npm run dev`, your smart contract gets deployed to the live NEAR TestNet with a throwaway account. When you're ready to make it permanent, here's how.
+## Project Structure
 
+The project structure is organized as follows:
 
-Step 0: Install near-cli (optional)
--------------------------------------
+- `src/`: This directory contains the application source code.
+  - `components/`: This directory contains the React components used in the dApp.
+  - `pages/`: This directory contains the different pages of the dApp.
+  - `contracts/`: This directory contains the smart contracts written in Rust.
+- `public/`: This directory contains the public assets for the dApp.
+- `neardev/`: This directory contains the compiled smart contracts and configuration files.
 
-[near-cli] is a command line interface (CLI) for interacting with the NEAR blockchain. It was installed to the local `node_modules` folder when you ran `npm install`, but for best ergonomics you may want to install it globally:
+## Usage
 
-    npm install --global near-cli
+To use the Blood Donation dApp, follow these steps:
 
-Or, if you'd rather use the locally-installed version, you can prefix all `near` commands with `npx`
+1. Access the dApp through your web browser at `http://localhost:1234` or the deployed URL.
+2. Register as a blood donor or recipient by providing the required information.
+3. Blood donors can record their donation history and specify their available blood types.
+4. Blood recipients can search for donors based on specific blood types and location.
+5. The trust system helps establish credibility and encourages active participation.
 
-Ensure that it's installed with `near --version` (or `npx near --version`)
+## Deployment
 
+To deploy the Blood Donation dApp to a live network, follow the NEAR Protocol deployment process. The detailed deployment instructions can be found at [https://docs.near.org/docs/develop/deploy/js/deploy-contract](https://docs.near.org/docs/develop/deploy/js/deploy-contract).
 
-Step 1: Create an account for the contract
-------------------------------------------
+## Contributing
 
-Each account on NEAR can have at most one contract deployed to it. If you've already created an account such as `your-name.testnet`, you can deploy your contract to `near-blank-project.your-name.testnet`. Assuming you've already created an account on [NEAR Wallet], here's how to create `near-blank-project.your-name.testnet`:
+Contributions to the Blood Donation dApp are welcome! If you would like to contribute, please follow these guidelines:
 
-1. Authorize NEAR CLI, following the commands it gives you:
-
-      near login
-
-2. Create a subaccount (replace `YOUR-NAME` below with your actual account name):
-
-      near create-account near-blank-project.YOUR-NAME.testnet --masterAccount YOUR-NAME.testnet
-
-
-Step 2: set contract name in code
----------------------------------
-
-Modify the line in `src/config.js` that sets the account name of the contract. Set it to the account id you used above.
-
-    const CONTRACT_NAME = process.env.CONTRACT_NAME || 'near-blank-project.YOUR-NAME.testnet'
-
-
-Step 3: deploy!
----------------
-
-One command:
-
-    npm run deploy
-
-As you can see in `package.json`, this does two things:
-
-1. builds & deploys smart contract to NEAR TestNet
-2. builds & deploys frontend code to GitHub using [gh-pages]. This will only work if the project already has a repository set up on GitHub. Feel free to modify the `deploy` script in `package.json` to deploy elsewhere.
-
-
-Troubleshooting
-===============
-
-On Windows, if you're seeing an error containing `EPERM` it may be related to spaces in your path. Please see [this issue](https://github.com/zkat/npx/issues/209) for more details.
-
-
-  [React]: https://reactjs.org/
-  [create-near-app]: https://github.com/near/create-near-app
-  [Node.js]: https://nodejs.org/en/download/package-manager/
-  [jest]: https://jestjs.io/
-  [NEAR accounts]: https://docs.near.org/docs/concepts/account
-  [NEAR Wallet]: https://wallet.testnet.near.org/
-  [near-cli]: https://github.com/near/near-cli
-  [gh-pages]: https://github.com/tschaub/gh-pages
+1. Fork the repository and create a new branch for your contribution.
+2. Make your changes and ensure that the code adheres
